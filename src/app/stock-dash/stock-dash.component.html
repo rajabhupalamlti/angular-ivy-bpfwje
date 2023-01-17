@@ -1,0 +1,50 @@
+<div>
+  <span> Enter The Stock</span>
+  <br />
+  <input
+    type="text"
+    id="stockInput"
+    name="stockInput"
+    [(ngModel)]="stockInput"
+  />
+  <button (click)="trackStock()">Track Stock</button>
+</div>
+
+<div style="border:3px solid black;margin:10px" *ngFor="let x of data">
+  <div style="justify-content:space-between;padding:10px">
+    <span
+      >{{ x[1].result[0].description }}
+      <b>({{ x[1].result[0].displaySymbol }})</b></span
+    >
+    <span style="margin-left:250px" id="remove" (click)="remove(x)"
+      ><button>X</button></span
+    >
+    <br /><br />
+    <span> currentPrice:{{ x[0].c }}</span
+    ><br />
+    <span>Change:{{ x[0].d }}</span
+    ><br />
+    <span>HighPrice:{{ x[0].h }}</span
+    ><br />
+    <span>OpenPrice:{{ x[0].o }}</span>
+
+    <span style="margin-left:250px">
+      <img [src]="up" *ngIf="x[0].c > 0" height="50px" />
+    </span>
+    <span style="margin-left:500px">
+      <img
+        [src]="Down"
+        *ngIf="x[0].c < 0"
+        height="10px"
+        style="margin-bottom:100px"
+      />
+    </span>
+  </div>
+  <button
+    class="Hi"
+    [routerLink]="'/sentiment/' + x[1].result[0].displaySymbol"
+    style="color:rgb(191, 0, 255)"
+  >
+    Go To Sentiment
+  </button>
+</div>

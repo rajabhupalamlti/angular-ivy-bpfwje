@@ -1,0 +1,20 @@
+<div>
+  <div style="border:3px solid  black; padding:10px">
+    <h3>{{ this.stockid }}</h3>
+    <div style="justify-content:space-between;padding:10px">
+      <div *ngFor="let item of value[0]?.data; let i = index">
+        <div>
+          <div>
+            <h2>{{ monthList[item.month - 1] }}</h2>
+          </div>
+          <div>year:{{ item.year }}</div>
+          <div>change : {{ item.change | number: '1.0-2' }}</div>
+          <div>MSPR : {{ item.mspr | number: '1.0-2' }}</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:5px">
+      <button (click)="redirectDetailsPage()">Back to list of stocks</button>
+    </div>
+  </div>
+</div>
